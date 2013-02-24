@@ -20,13 +20,6 @@ app.configure(function() {
 	app.use(app.router);
 });
 
-app.configure('development', function() {
-	app.use(express.errorHandler({
-		dumpExceptions: true,
-		showStack: true
-	}));
-});
-
 app.configure('production', function() {
 	app.use(express.errorHandler());
 });
@@ -42,6 +35,6 @@ app.get('/REST', api.getIp);
 app.get('*', routes.index);
 
 // Start server
-app.listen(3000, function() {
+app.listen(8081, function() {
 	console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
 });
