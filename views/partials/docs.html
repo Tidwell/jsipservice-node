@@ -1,0 +1,150 @@
+<div class="container">
+<!-- Docs nav
+================================================== -->
+<div class="row">
+  <div class="span3 bs-docs-sidebar">
+    <ul class="nav nav-list bs-docs-sidenav affix">
+      <li class="active"><a href="#overview"><i class="icon-chevron-right"></i>Overview</a></li>
+      <li><a href="#quick-start"><i class="icon-chevron-right"></i>Example</a></li>
+      <li><a href="#quick-start-jquery"><i class="icon-chevron-right"></i>jQuery Example</a></li>
+      <li><a href="#source"><i class="icon-chevron-right"></i>Source</a></li>
+      <li><a href="#internals"><i class="icon-chevron-right"></i>Internals</a></li>
+      <li><a href="#next-steps"><i class="icon-chevron-right"></i>Next Steps</a></li>
+    </ul>
+  </div>
+  <div class="span9">
+    <h1>Docs</h1>
+    <!-- Overview
+    ================================================== -->
+    <section id="overview">
+      <div class="page-header">
+        <h1>Overview</h1>
+      </div>
+
+        <p>
+          The ipService library provides a single method: <code>.get</code>.  The get method accepts a callback function as the only argument, which is passed an object containing the user's IP address.
+<pre class="prettyprint">
+{
+  ip: "00.000.000.000"
+}
+</pre>
+        </p>
+    </section>
+
+    <!-- Quick Start
+    ================================================== -->
+    <section id="quick-start">
+      <div class="page-header">
+        <h1>Example</h1>
+      </div>
+      <p class="lead">Two, simple steps</p>
+
+      <h3>1. Include the library via <code>script</code> tag.</h3>
+<pre class="prettyprint">
+&lt;script src="http://www.jsIpService.com/ipservice.min.js"&gt;&lt;/script&gt;
+</pre>
+
+
+      <h3>2. call <code>.get</code>.</h3>
+<pre class="prettyprint">
+function callback(user) {
+  alert(user.ip);
+}
+ipService.get(callback);
+</pre>
+      <a href="http://jsfiddle.net/rguQB/" target="_new">View example on jsfiddle</a>
+    </section>
+
+    <section id="quick-start-jquery">
+      <div class="page-header">
+        <h1>With jQuery</h1>
+      </div>
+        <p class="lead">You don't need to include our library.</p>
+        <h3>Call .getJSON</h3>
+<pre class="prettyprint">
+$.getJSON("http://www.jsipservice.com/REST?callback=?",function(obj) {
+    alert(obj.ip)
+});
+</pre>
+      <a href="http://jsfiddle.net/kkCFJ/" target="_new">View example on jsfiddle</a>
+    </section>
+
+
+
+    <section id="source">
+        <div class="page-header">
+          <h1>Source</h1>
+        </div>
+        <p>
+          The source for the library, unminified, is available at: <a href="http://www.jsipservice.com/ipservice.js" target="_new">http://www.jsipservice.com/ipservice.js</a> or via <a href="https://github.com/Tidwell/jsipservice/blob/master/ipservice.js" target="_new">github</a>, along with the source for the entire site and service.
+        </p>
+    </section>
+
+    <section id="internals">
+        <div class="page-header">
+          <h1>Internals</h1>
+        </div>
+        <p>
+          Internally, the js library caches your callback before injecting a script tag into the page, then on response, executes your callback and performs cleanup (removing the injected script tag) and removing the stored callback.
+        </p>
+
+        <p>
+          While the browser is loading the jsonP response from the ipService, the callbacks are exposed via ipService.callbacks.  ipService.callbacks also has a default property that will be called if no callback is passed to get.
+        </p>
+        <p>
+          This default callback simply logs the ip address to console.  You could overwrite <code>ipService.callbacks.default</code> if you would like to call .get() without passing a callback.
+        </p>
+
+        <p>
+          If the warning: <code>'Overwriting existing ipService variable'</code> shows up in console, either you are including the script tag multiple times, or you are already using the ipService variable in your own code in global scope.  If this is the case, feel free to download and rehost a copy of the library with whatever changes you need.
+        </p>
+
+        <p>
+          On the backend, both this website and the REST service are running through the same single-entry-point, with calls to the api being handled through a rest class, modified from <a href="http://blog.garethj.com/2009/02/17/building-a-restful-web-application-with-php/" target="_new">this example</a>.
+        </p>
+    </section>
+
+    <section id="next-steps">
+        <div class="page-header">
+          <h1>Next Steps</h1>
+        </div>
+        <p>
+          These are potential new features, none are guaranteed to ever exist.  If you have any ideas, <a href="/contact">drop me a line.</a>
+        </p>
+        <ul>
+          <li>Features
+            <ul>
+              <li>tests</li>
+              <li>noConflict</li>
+              <li>self-hosted service</li>
+            </ul>
+          </li>
+
+          <li>Config options
+            <ul>
+              <li>callback prefix - noConflict</li>
+              <li>noConflict global ipService - noConflict</li>
+              <li>ajax route - selfHosted</li>
+            </ul>
+          </li>
+
+          <li>Organization
+            <ul>
+              <li>fork REST service - selfHosted</li>
+              <li>proper build script - test</li>
+              <li>README</li>
+            </ul>
+          </li>
+
+          <li>Site
+            <ul>
+              <li>Scaling solution  - cdn-hosting, node backend</li>
+              <li>Refine REST - proper Headers and requestType support</li>
+            </ul>
+          </li>
+        </ul>
+    </section>
+
+  </div><!-- span9 -->
+</div><!-- row -->
+</div>

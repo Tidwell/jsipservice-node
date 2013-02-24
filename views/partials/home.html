@@ -1,0 +1,45 @@
+<div class="container">
+  <!-- Main hero unit for a primary marketing message or call to action -->
+  <div class="hero-unit row">
+    <div class="pull-left span4">
+      <h1>Javascript IP Service</h1>
+      <h2>Your IP: <span>{{ip}}</span></h2>
+      <p>Need to get the user's IP address from javascript?  Look no further.  Our minimal javascript library and fast service will asynchronous expose your user's IP.</p>
+      <p><a href="/docs" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
+    </div>
+
+        <div class="span6 pull-right home-example">
+<pre class="prettyprint lang-html">
+&lt;script src="http://www.jsIpService.com/ipservice.min.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+  ipService.get(function(user) {
+    alert(user.ip);
+  });
+&lt;/script&gt;
+</pre>
+<p>Or with jQuery</p>
+<pre class="prettyprint lang-javascript">
+$.getJSON("http://www.jsipservice.com/REST?callback=?",function(obj) {
+    alert(obj.ip)
+});
+</pre>
+    </div>
+
+  </div>
+
+  <!-- Example row of columns -->
+  <div class="row">
+    <div class="span4">
+      <h2>Minimal</h2>
+      <p>Weighing only 757Bytes, our library is lightweight and unobtrusive - we only expose one global: ipService.</p>
+    </div>
+    <div class="span4">
+      <h2>Fast</h2>
+      <p class="user-time">It took <span>{{time}}</span> seconds to get your IP address. <a ng-click="refresh()">refresh</a>. </p>
+   </div>
+    <div class="span4">
+      <h2>Free!</h2>
+      <p>Free for all small-scale users.</p>
+    </div>
+  </div>
+</div>
