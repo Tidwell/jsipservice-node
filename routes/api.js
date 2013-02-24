@@ -4,6 +4,6 @@
 
 exports.getIp = function(req, res) {
 	res.jsonp({
-		ip: req.headers['HTTP_X_FORWARDED'] || req.connection.remoteAddress
+		ip: req.headers['x-forwarded-for'] || req.connection.remoteAddress
 	});
 };
