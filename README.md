@@ -1,9 +1,9 @@
 # JSIPService.com
 
 Based on Angular Express Seed
- - jade
- + server-side underscore
- + Bootstrap
+ - removed jade
+ - added underscore
+ - frontend, added Bootstrap
 
 ## Info
 
