@@ -30,6 +30,15 @@ app.get('/partials/:name', routes.partials);
 
 // JSON API
 app.get('/REST', api.getIp);
+app.get('/REST/user/create', api.user.create);
+app.get('/REST/user/authenticate', api.user.authenticate);
+app.get('/REST/user/update', api.user.update);
+app.get('/REST/user/delete', api.user.delete);
+
+app.get('/REST/keys/list', api.keys.list);
+app.get('/REST/keys/create', api.keys.create);
+app.get('/REST/keys/update', api.keys.update);
+app.get('/REST/keys/delete', api.keys.delete);
 
 // redirect all others to the index (HTML5 history)
 app.get('*', routes.index);
